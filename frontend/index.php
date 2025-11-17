@@ -51,7 +51,7 @@ if ($_POST && isset($_POST["msg"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgriBot Chat</title>
+    <title>BizBot Chat</title>
     <style>
         * {
             margin: 0;
@@ -61,15 +61,15 @@ if ($_POST && isset($_POST["msg"])) {
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background: #343541;
+            background: #1e3a5f;
             height: 100vh;
             display: flex;
             flex-direction: column;
         }
         
         .chat-header {
-            background: #202123;
-            border-bottom: 1px solid #444654;
+            background: #0f2847;
+            border-bottom: 1px solid #2c5282;
             padding: 12px 20px;
             display: flex;
             align-items: center;
@@ -84,7 +84,7 @@ if ($_POST && isset($_POST["msg"])) {
         
         .new-chat-btn {
             background: transparent;
-            border: 1px solid #565869;
+            border: 1px solid #4299e1;
             color: #ececf1;
             padding: 8px 16px;
             border-radius: 6px;
@@ -96,7 +96,7 @@ if ($_POST && isset($_POST["msg"])) {
         }
         
         .new-chat-btn:hover {
-            background: #40414f;
+            background: #2c5282;
         }
         
         #chat-box {
@@ -114,22 +114,22 @@ if ($_POST && isset($_POST["msg"])) {
         }
         
         #chat-box::-webkit-scrollbar-thumb {
-            background: #565869;
+            background: #4299e1;
             border-radius: 10px;
         }
         
         .message-wrapper {
             width: 100%;
             padding: 24px 20px;
-            border-bottom: 1px solid #444654;
+            border-bottom: 1px solid #2c5282;
         }
         
         .message-wrapper.user {
-            background: #343541;
+            background: #1e3a5f;
         }
         
         .message-wrapper.bot {
-            background: #444654;
+            background: #2c5282;
         }
         
         .message-content {
@@ -151,11 +151,11 @@ if ($_POST && isset($_POST["msg"])) {
         }
         
         .avatar.user {
-            background: #5436da;
+            background: #3182ce;
         }
         
         .avatar.bot {
-            background: #19c37d;
+            background: #4299e1;
         }
         
         .message-text {
@@ -168,9 +168,9 @@ if ($_POST && isset($_POST["msg"])) {
         }
         
         .chat-input-container {
-            background: #343541;
+            background: #1e3a5f;
             padding: 20px;
-            border-top: 1px solid #444654;
+            border-top: 1px solid #2c5282;
         }
         
         .input-wrapper {
@@ -191,19 +191,19 @@ if ($_POST && isset($_POST["msg"])) {
             resize: none;
             font-size: 16px;
             font-family: inherit;
-            background: #40414f;
+            background: #2c5282;
             color: #ececf1;
-            box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
+            box-shadow: 0 0 0 1px rgba(66, 153, 225, 0.3);
             transition: box-shadow 0.2s;
         }
         
         textarea:focus {
             outline: none;
-            box-shadow: 0 0 0 2px rgba(255,255,255,0.15);
+            box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
         }
         
         textarea::placeholder {
-            color: #8e8ea0;
+            color: #a8c5e6;
         }
         
         .send-btn {
@@ -212,7 +212,7 @@ if ($_POST && isset($_POST["msg"])) {
             bottom: 12px;
             width: 32px;
             height: 32px;
-            background: #19c37d;
+            background: #3182ce;
             border: none;
             border-radius: 6px;
             cursor: pointer;
@@ -223,11 +223,11 @@ if ($_POST && isset($_POST["msg"])) {
         }
         
         .send-btn:hover:not(:disabled) {
-            background: #1aa370;
+            background: #2c5282;
         }
         
         .send-btn:disabled {
-            background: #40414f;
+            background: #2c5282;
             cursor: not-allowed;
             opacity: 0.5;
         }
@@ -240,7 +240,7 @@ if ($_POST && isset($_POST["msg"])) {
         
         .empty-state {
             text-align: center;
-            color: #8e8ea0;
+            color: #a8c5e6;
             padding: 60px 20px;
             max-width: 600px;
             margin: auto;
@@ -260,7 +260,7 @@ if ($_POST && isset($_POST["msg"])) {
         }
         
         .example-prompt {
-            background: #40414f;
+            background: #2c5282;
             padding: 16px;
             border-radius: 8px;
             font-size: 14px;
@@ -271,8 +271,8 @@ if ($_POST && isset($_POST["msg"])) {
         }
         
         .example-prompt:hover {
-            background: #4a4b5a;
-            border-color: #565869;
+            background: #3182ce;
+            border-color: #4299e1;
         }
         
         @media (max-width: 768px) {
@@ -294,7 +294,7 @@ if ($_POST && isset($_POST["msg"])) {
 </head>
 <body>
     <div class="chat-header">
-        <h2>🌾 AgriBot</h2>
+        <h2>💼 BizBot</h2>
         <a href="?clear=1" class="new-chat-btn" onclick="return confirm('Start a new chat? Current conversation will be cleared.')">+ New chat</a>
     </div>
     
@@ -303,11 +303,11 @@ if ($_POST && isset($_POST["msg"])) {
         // Render chat
         if (empty($_SESSION["chat"])) {
             echo '<div class="empty-state">';
-            echo '<h3>How can I help you today?</h3>';
+            echo '<h3>How can I help your business today?</h3>';
             echo '<div class="example-prompts">';
-            echo '<div class="example-prompt">What are the best practices for rice cultivation?</div>';
-            echo '<div class="example-prompt">How do I prevent pest attacks on crops?</div>';
-            echo '<div class="example-prompt">When is the right time to plant corn?</div>';
+            echo '<div class="example-prompt">What are effective strategies to increase sales?</div>';
+            echo '<div class="example-prompt">How do I manage cash flow in my business?</div>';
+            echo '<div class="example-prompt">What marketing tactics work best for startups?</div>';
             echo '</div>';
             echo '</div>';
         } else {
